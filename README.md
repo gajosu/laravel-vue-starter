@@ -2,7 +2,7 @@
 
 A modern Laravel + Vue + Tailwind starter template with Docker for rapid development.
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-000000?style=for-the-badge&logo=github)](https://github.com/tu-usuario/laravel-vue-starter/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-000000?style=for-the-badge&logo=github)](https://github.com/gajosu/laravel-vue-starter/generate)
 [![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/)
 [![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)](https://vuejs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
