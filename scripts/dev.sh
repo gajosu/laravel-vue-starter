@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Development script for Laravel + Vue + Tailwind Template
+# Development script for Laravel Vue Starter
 
 set -e
 

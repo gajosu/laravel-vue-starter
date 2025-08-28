@@ -1,4 +1,4 @@
-# Laravel + Vue + Tailwind Template
+# Laravel Vue Starter
 
 A modern Laravel template with Vue 3, Tailwind CSS v4, and Docker (Sail) for rapid development.
 

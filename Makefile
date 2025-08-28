@@ -2,7 +2,7 @@
 
 # Default target
 help:
-	@echo "Laravel + Vue + Tailwind Template - Available commands:"
+	@echo "Laravel Vue Starter - Available commands:"
 	@echo ""
 	@echo "  setup      - Complete project setup (recommended)"
 	@echo "  dev        - Run in development mode (Sail + Vite)"

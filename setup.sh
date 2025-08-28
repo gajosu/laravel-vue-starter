@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Laravel + Vue + Tailwind Template Setup Script
+# Laravel Vue Starter Setup Script
 # This script sets up the complete development environment
 
 set -e
 
 echo ""
-echo "🚀 Laravel + Vue + Tailwind Template Setup"
+echo "🚀 Laravel Vue Starter Setup"
 echo "=========================================="
 echo ""
 
