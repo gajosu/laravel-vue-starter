@@ -1,0 +1,23 @@
+# Docker Compose Override Example
+# Copy this file to docker-compose.override.yml to customize your development environment
+
+services:
+    laravel.test:
+        environment:
+            # Enable Xdebug for debugging
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-develop,debug}'
+            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+
+        # Add custom volumes if needed
+        volumes:
+            - '.:/var/www/html'
+            # Uncomment to add custom volume mounts
+            # - './custom-config:/var/www/html/config'
+
+    # Add custom services if needed
+    # custom-service:
+    #     image: 'your-custom-image:latest'
+    #     ports:
+    #         - '8080:80'
+    #     networks:
+    #         - sail
