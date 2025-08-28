@@ -66,6 +66,27 @@ wait_for_mysql() {
     return 1
 }
 
+# Function to wait for Laravel service to be ready
+wait_for_laravel() {
+    print_status "Waiting for Laravel service to be ready..."
+    local timeout=120
+    local counter=0
+
+    while [ $counter -lt $timeout ]; do
+        if docker ps --format "table {{.Names}}\t{{.Status}}" | grep -q "laravel.test.*Up"; then
+            print_success "Laravel service is ready!"
+            return 0
+        fi
+
+        counter=$((counter + 5))
+        print_status "Waiting for Laravel service... ($counter/$timeout seconds)"
+        sleep 5
+    done
+
+    print_error "Timeout waiting for Laravel service. Check logs with: make logs"
+    return 1
+}
+
 # Check if Docker is running
 print_step "Checking Docker..."
 if ! docker info > /dev/null 2>&1; then
@@ -96,20 +117,26 @@ print_status "Downloading Node.js dependencies..."
 docker run --rm -v $(pwd):/app -w /app node:20 npm install
 print_success "NPM dependencies installed"
 
+# Start Docker services first
+print_step "Starting Docker services..."
+print_status "Starting containers..."
+./vendor/bin/sail up -d
+print_success "Docker services started"
+
+# Wait for Laravel service to be ready
+print_step "Verifying Laravel service..."
+if ! wait_for_laravel; then
+    exit 1
+fi
+
 # Generate application key
 print_step "Configuring Laravel..."
 print_status "Generating application key..."
 ./vendor/bin/sail artisan key:generate --no-interaction
 print_success "Application key generated"
 
-# Start Docker services
-print_step "Starting Docker services..."
-print_status "Starting containers..."
-./vendor/bin/sail up -d
-print_success "Docker services started"
-
 # Wait for MySQL to be ready
-print_step "Verifying services..."
+print_step "Verifying MySQL service..."
 if ! wait_for_mysql; then
     exit 1
 fi
