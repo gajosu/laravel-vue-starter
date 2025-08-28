@@ -1,19 +1,49 @@
 # Laravel Vue Starter
 
-A modern Laravel template with Vue 3, Tailwind CSS v4, and Docker (Sail) for rapid development.
+A modern Laravel + Vue + Tailwind starter template with Docker for rapid development.
 
-## 🚀 Features
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-000000?style=for-the-badge&logo=github)](https://github.com/tu-usuario/laravel-vue-starter/generate)
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/)
+[![Vue.js](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D)](https://vuejs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
--   **Laravel 11** - Latest Laravel framework
+## 🚀 Quick Start
+
+1. **Click "Use this template"** above
+2. **Clone your new repository**
+3. **Run the setup script:**
+    ```bash
+    make setup
+    # Or use the following command
+    ./setup.sh
+    ```
+4. **Start developing!** 🎉
+
+## ✨ Features
+
+### 🎯 **Modern Stack**
+
+-   **Laravel 11** - Latest Laravel framework with Sail
 -   **Vue 3** - Composition API with modern reactivity
 -   **Tailwind CSS v4** - Latest version with new features
--   **Vite** - Fast build tool and development server
--   **Docker (Sail)** - Complete development environment
+-   **Vite** - Lightning-fast build tool and dev server
+
+### 🐳 **Docker Environment**
+
+-   **Complete development stack** with Sail
 -   **MySQL 8.0** - Database
 -   **Redis** - Caching and sessions
 -   **Meilisearch** - Fast search engine
--   **Mailpit** - Email testing
+-   **Mailpit** - Email testing interface
 -   **Selenium** - Browser testing
+
+### 🛠️ **Developer Experience**
+
+-   **One-click setup** with `make setup` or `./setup.sh`
+-   **Hot reload** for Vue and CSS
+-   **Convenience commands** with Makefile
+-   **VS Code configuration** included
+-   **Production-ready** configuration
 
 ## 📋 Prerequisites
 
@@ -21,89 +51,50 @@ A modern Laravel template with Vue 3, Tailwind CSS v4, and Docker (Sail) for rap
 -   Git
 -   Make (optional, for convenience commands)
 
-## ⚡ Quick Start
-
-### Option 1: One-click setup (Recommended)
-
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd <project-name>
-
-# Run the setup script
-./setup.sh
-```
-
-### Option 2: Manual setup
-
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd <project-name>
-
-# Install dependencies
-make install
-
-# Setup the project
-make setup
-```
-
-### Option 3: Using Make commands
-
-```bash
-# See all available commands
-make help
-
-# Install dependencies
-make install
-
-# Complete setup
-make setup
-
-# Development mode
-make dev
-```
-
 ## 🛠️ Development
 
 ### Starting the development environment
 
 ```bash
-# Start all services
-make up
+# Complete setup (recommended for first time)
+make setup
 
-# Start development mode (Sail + Vite)
+# Or use the following command
+./setup.sh
+
+# Development mode
 make dev
 ```
 
 ### Available URLs
 
--   **Application**: http://localhost
--   **Mailpit**: http://localhost:8025
--   **Meilisearch**: http://localhost:7700
--   **Redis**: localhost:6379
--   **MySQL**: localhost:3306
+-   🌐 **Application**: http://localhost
+-   📧 **Mailpit**: http://localhost:8025
+-   🔍 **Meilisearch**: http://localhost:7700
+-   📊 **Redis**: localhost:6379
+-   🗄️ **MySQL**: localhost:3306
 
 ### Useful Commands
 
 ```bash
-# Laravel commands
+# Development
+make dev          # Start development mode
+make up           # Start services only
+make down         # Stop services
+make logs         # View logs
+
+# Laravel
 ./vendor/bin/sail artisan migrate
 ./vendor/bin/sail artisan make:controller ExampleController
 ./vendor/bin/sail artisan make:model Example -m
 
-# Frontend development
+# Frontend
 ./vendor/bin/sail npm run dev
 ./vendor/bin/sail npm run build
 
-# Docker management
-make up      # Start services
-make down    # Stop services
-make restart # Restart services
-make logs    # View logs
-
-# Cache management
-make clean   # Clear all caches
+# Maintenance
+make clean        # Clear all caches
+make restart      # Restart services
 ```
 
 ## 📁 Project Structure
@@ -117,7 +108,8 @@ make clean   # Clear all caches
 │   │   ├── app.js         # Main JavaScript entry point
 │   │   ├── bootstrap.js   # Bootstrap file
 │   │   └── components/    # Vue components
-│   │       └── App.vue    # Main Vue component
+│   │       ├── App.vue    # Main Vue component
+│   │       └── ExampleComponent.vue  # Example component
 │   └── views/
 │       └── welcome.blade.php  # Main Blade template
 ├── routes/
@@ -127,7 +119,9 @@ make clean   # Clear all caches
 ├── package.json           # NPM dependencies
 ├── composer.json          # Composer dependencies
 ├── Makefile              # Convenience commands
-└── setup.sh              # One-click setup script
+├── setup.sh              # One-click setup script
+└── scripts/
+    └── dev.sh            # Development script
 ```
 
 ## 🎨 Frontend Development
@@ -136,13 +130,19 @@ make clean   # Clear all caches
 
 Vue components are located in `resources/js/components/`. The main app is mounted in `resources/js/app.js`.
 
+**Example component included:**
+
+-   Interactive counter demo
+-   Vue 3 Composition API examples
+-   Tailwind CSS styling
+
 ### Tailwind CSS v4
 
 This template uses Tailwind CSS v4 with the new `@import 'tailwindcss'` syntax. The configuration is in `resources/css/app.css`.
 
 ### Hot Reload
 
-Vite provides hot reload for both Vue components and CSS changes. Just run:
+Vite provides instant hot reload for both Vue components and CSS changes:
 
 ```bash
 make dev
@@ -150,7 +150,7 @@ make dev
 
 ## 🐳 Docker Services
 
-The template includes the following services:
+The template includes a complete development environment:
 
 -   **laravel.test**: Main Laravel application (PHP 8.4)
 -   **mysql**: MySQL 8.0 database
@@ -163,13 +163,7 @@ The template includes the following services:
 
 ### Environment Variables
 
-Copy `.env.example` to `.env` and configure your environment:
-
-```bash
-cp .env.example .env
-```
-
-Key variables to configure:
+The setup script automatically copies `.env.example` to `.env`. Key variables:
 
 -   `APP_NAME`: Your application name
 -   `APP_URL`: Your application URL
@@ -179,11 +173,11 @@ Key variables to configure:
 
 ### Database
 
-The MySQL database is automatically created and configured. You can access it at `localhost:3306`.
+The MySQL database is automatically created and configured during setup.
 
 ### Email Testing
 
-Use Mailpit to test emails during development. Access the interface at http://localhost:8025.
+Use Mailpit to test emails during development at http://localhost:8025.
 
 ## 🧪 Testing
 
@@ -197,20 +191,21 @@ Use Mailpit to test emails during development. Access the interface at http://lo
 
 ## 📦 Production Deployment
 
-1. Build the assets:
+1. **Build assets:**
 
-```bash
-make build
-```
+    ```bash
+    make build
+    ```
 
-2. Set up your production environment variables
-3. Run migrations:
+2. **Set up production environment variables**
 
-```bash
-./vendor/bin/sail artisan migrate --force
-```
+3. **Run migrations:**
 
-4. Configure your web server to serve the application
+    ```bash
+    ./vendor/bin/sail artisan migrate --force
+    ```
+
+4. **Configure your web server**
 
 ## 🤝 Contributing
 
@@ -235,3 +230,5 @@ This project is open-sourced software licensed under the [MIT license](https://o
 ---
 
 **Happy coding! 🚀**
+
+_This template is designed to get you up and running quickly with a modern Laravel + Vue + Tailwind stack._
