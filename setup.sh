@@ -48,11 +48,15 @@ print_header() {
 # Function to wait for MySQL to be ready
 wait_for_mysql() {
     print_status "Waiting for MySQL to be ready..."
-    local timeout=60
+    local timeout=300
     local counter=0
 
+    # Get the project name from the current directory
+    local project_name=$(basename $(pwd))
+    local mysql_container="${project_name}-mysql-1"
+
     while [ $counter -lt $timeout ]; do
-        if docker exec festival-cortos-mysql-1 mysqladmin ping -h localhost -u root -p${DB_PASSWORD:-password} --silent 2>/dev/null; then
+        if docker exec ${mysql_container} mysqladmin ping -h localhost -u root -p${DB_PASSWORD:-password} --silent 2>/dev/null; then
             print_success "MySQL is ready!"
             return 0
         fi
